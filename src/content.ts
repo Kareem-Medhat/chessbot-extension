@@ -142,14 +142,14 @@ function initMessageHandling(port: chrome.runtime.Port) {
 
 function toggleStart(router: Router) {
   const onListen = async () => {
-    const observer = await waitForElement("#board-layout-sidebar").then(start);
+    const observer = await waitForElement(moveListSelector).then(start);
     router.unhandle("LISTEN_MOVES");
     router.handle("UNLISTEN_MOVES", () => onUnlisten(observer));
   };
   const onUnlisten = (observer: MutationObserver) => {
     observer.disconnect();
     const chessboard = document.querySelector(
-      "wc-chess-board"
+      boardSelector
     ) as HTMLElement | null;
     if (chessboard) {
       clearBoard(chessboard);
@@ -160,7 +160,7 @@ function toggleStart(router: Router) {
   onListen().then(() => console.log(router));
 }
 function showMove(message: { move: string }) {
-  const chessBoard = document.querySelector("wc-chess-board")! as HTMLElement;
+  const chessBoard = document.querySelector(boardSelector)! as HTMLElement;
   clearBoard(chessBoard);
   const { x: boardX, y: boardY } = chessBoard.getBoundingClientRect();
   const isFlipped = chessBoard.classList.contains("flipped");
