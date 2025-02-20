@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "Chessbot",
+  "description": "Don't play chess",
+  "version": "1.0",
+  "action": {
+    "default_title": "Toggle bot"
+  },
+  "background": {
+    "scripts": [
+      "build/background.js"
+    ],
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "build/content.js"
+      ],
+      "matches": [
+        "https://www.chess.com/play/computer",
+        "https://www.chess.com/play/online*",
+        "https://www.chess.com/game/*",
+        "https://www.chess.com/practice*"
+      ]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "chessbot@kareem.com"
+    }
+  },
+  "permissions": [
+    "nativeMessaging",
+    "storage"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Q"
+      }
+    }
+  }
+}
