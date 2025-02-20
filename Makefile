@@ -1,6 +1,6 @@
-.PHONY: build
+.PHONY: build pack
 
-build: dist/build/content.js dist/build/background.js dist/icons dist/manifest.json
+build: dist/content.js dist/background.js dist/icons dist/manifest.json
 
 pack: build
 	chromium --pack-extension=./dist
@@ -8,10 +8,10 @@ pack: build
 clean-unsafe:
 	rm -rf dist dist.crx dist.pem
 
-dist/build/content.js: src/content.ts
+dist/content.js: src/content.ts
 	npm run content
 
-dist/build/background.js: src/background.ts
+dist/background.js: src/background.ts
 	npm run background
 
 dist/icons:

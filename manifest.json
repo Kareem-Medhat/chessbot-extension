@@ -8,14 +8,14 @@
   },
   "background": {
     "scripts": [
-      "build/background.js"
+      "background.js"
     ],
     "type": "module"
   },
   "content_scripts": [
     {
       "js": [
-        "build/content.js"
+        "content.js"
       ],
       "matches": [
         "https://www.chess.com/play/computer",

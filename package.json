@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "content": "esbuild --bundle src/content.ts --outdir=dist/build --minify",
-    "background": "esbuild --bundle src/background.ts --outdir=dist/build --minify --format=esm"
+    "content": "esbuild --bundle src/content.ts --outfile=dist/content.js --minify",
+    "background": "esbuild --bundle src/background.ts --outfile=dist/background.js --minify --format=esm"
   },
   "keywords": [],
   "author": "",
